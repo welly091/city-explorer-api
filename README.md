@@ -34,3 +34,36 @@ Vida Powerll. She helped us drawed the WRRC diagram for this project.
 ##Finish time: 5:51pm PST
 
 ##Actual time needed to complete: 4 hours
+
+**Version**: 1.0.2
+
+## Overview
+Add two axios GET request to the backend server.
+
+## Getting Started
+1. Create one axios GET request to get movie and another axios GET request to get weather from server.
+2. Create components to render the response result.
+
+## Architecture
+Node.js, Express.js
+
+## Change Log
+5/18/2022 -- 2:15pm Pair partners discussion.
+5/18/2022 -- 3:00pm Start the server construction.
+5/18/2022 -- 4:30pm Start the front end construction.
+5/18/2022 -- 7:30pm App make request successfully.
+
+## Credit and Collaborations
+Vinny Shipley. We draw out the WRRC diagram.
+<img src="https://imgur.com/s7f0r3i"><img>
+
+
+##Name of feature: city-explorer-api
+
+##Estimate of time needed to complete: 3 hours
+
+##Start time: 3:00pm PST
+
+##Finish time: 7:30pm PST
+
+##Actual time needed to complete: 4 hours and 30 minutes

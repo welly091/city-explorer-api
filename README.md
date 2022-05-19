@@ -22,7 +22,7 @@ Node.js, Express.js
 
 ## Credit and Collaborations
 Vida Powerll. She helped us drawed the WRRC diagram for this project.
-<img src="https://imgur.com/QfFbSnU"><img>
+<img src="https://i.imgur.com/QfFbSnU.jpeg"><img>
 
 
 ##Name of feature: city-explorer-api
@@ -55,7 +55,7 @@ Node.js, Express.js
 
 ## Credit and Collaborations
 Vinny Shipley. We draw out the WRRC diagram.
-<img src="https://imgur.com/s7f0r3i"><img>
+<img src="https://i.imgur.com/s7f0r3i.png"><img>
 
 
 ##Name of feature: city-explorer-api

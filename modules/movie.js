@@ -1,20 +1,27 @@
+'use strict';
 const axios = require('axios')
+let cache = require('./cache.js');
 
-//@route GET/themoviedb.org
-const getMovie = async (req,res) =>{
-    try {
-        let city = req.query.city
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${city}&language=en-US&page=1`
+function getMovie(city) {
+    const key = 'weather-' + city;
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${city}&language=en-US&page=1`
         
-        let movieData = await axios.get(url)
-            .then((res) =>{
-                return res.data.results
-            })
-            .catch((error) =>{
-                res.status(400).send("Cannot find the movie with the city name.")
-            })
-
-        let array_movieData = movieData.map(eachObj =>{
+    const movieCasheTime = 1000 * 60 * 60 * 12
+    if (cache[key] && (Date.now() - cache[key].timestamp < movieCasheTime)) {
+      console.log('Movie Cache hit');
+    } else {
+      console.log('Movie Cache miss');
+      cache[key] = {};
+      cache[key].timestamp = Date.now();
+      cache[key].data = axios.get(url)
+      .then(response =>parseMovie(response))
+    }
+    return cache[key].data;
+  }
+  
+  function parseMovie(movieData) {
+    try {
+        let array_movieData = movieData.data.results.map(eachObj =>{
             const{title, overview, vote_average, vote_count, backdrop_path,popularity, release_date}= eachObj
             return new Movie(
                 title,
@@ -25,13 +32,14 @@ const getMovie = async (req,res) =>{
                 popularity,
                 release_date
             )    
-        })
-        res.send(array_movieData)
-    } catch (error) {
-        res.status(500).send('Moive Server Error.')
+      });
+      return Promise.resolve(array_movieData);
+    } catch (e) {
+      return Promise.reject(e);
     }
-}
+  }
 
+//Movie Class
 class Movie{
     constructor(title, overview, average_votes, total_votes, image_url, popularity, release_on){
         this.title = title,

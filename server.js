@@ -1,20 +1,59 @@
+'use strict';
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios')
-const getMovie = require('./modules/movie.js')
-const weatherAPI = require('./modules/weather.js')
+const weather = require('./modules/weather.js');
+const movie = require('./modules/movie.js')
+const yelp = require('./modules/yelp')
 
-const app = express()
-
+const app = express();
 app.use(cors())
 
-app.get('/weather', weatherAPI.getCurrentWeather);
-app.get('/forecast', weatherAPI.getForecastWeather);
-app.get('/movie', getMovie);
+app.get('/forecast', weatherHandler);
+app.get('/movie', movieHandler);
+app.get('/weather', currWeatherHandler);
+app.get('/yelp', yelpHandler )
 
-app.get('*', (req,res) =>{
-    res.send('What you requested is not existed...')
-})
 
-app.listen(process.env.PORT || 3002)
+function weatherHandler(request, response) {
+  const { lat, lon } = request.query;
+  weather.getFWeather(lat, lon)
+  .then(summaries => response.send(summaries))
+  .catch((error) => {
+    console.error(error);
+    response.status(200).send('Sorry. Something went wrong with Weather API!')
+  });
+}  
+
+function currWeatherHandler(request, response) {
+  const { lat, lon } = request.query;
+  weather.getCurrWeather(lat,lon)
+  .then(summaries => response.send(summaries))
+  .catch((error) => {
+    console.error(error);
+    response.status(200).send('Sorry. Something went wrong with Weather API!')
+  });
+} 
+
+function movieHandler(request, response) {
+  movie(request.query.city)
+  .then(res => response.send(res))
+  .catch((error) => {
+    console.error(error);
+    response.status(200).send('Sorry. Something went wrong with Movie API!')
+  });
+}  
+
+function yelpHandler(request, response) {
+  const { lat, lon } = request.query;
+  yelp(lat, lon)
+  .then(summaries => response.send(summaries))
+  .catch((error) => {
+    console.error(error);
+    response.status(200).send('Sorry. Something went wrong with Yelp.com API!')
+  });
+}  
+
+
+app.listen(process.env.PORT, () => console.log(`Server up on ${process.env.PORT}`));

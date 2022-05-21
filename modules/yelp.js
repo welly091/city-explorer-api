@@ -4,7 +4,7 @@ let cache = require('./cache.js');
 
 function getYelpData(latitude, longitude) {
     const key = 'yelp-' + latitude + longitude;
-    const url = `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&sort_by=best_match`
+    const url = `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&sort_by=best_match&categories=restaurants`
     
     const setTime = 1000 * 60 * 60 //One hour
     if (cache[key] && (Date.now() - cache[key].timestamp < setTime)) {

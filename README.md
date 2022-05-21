@@ -99,3 +99,37 @@ Jon Armstrong. We draw out the WRRC diagram.
 ##Finish time: 5:00pm PST
 
 ##Actual time needed to complete: 3:30 hour
+
+**Version**: 2.0.0
+
+## Overview
+Add cashe at backend and add yelp.com request.
+
+## Getting Started
+1. Copy server.js and weather.js from code fellows 301 course webste.
+2. Debug files and add cash funtionality to other API files.
+3. Add yelp API.
+4. Modify the front end files and successfully functional.
+
+## Architecture
+Node.js, Express.js, React.js
+
+## Change Log
+5/19/2022 -- 3:00pm Start the project. Start Debug files.
+5/19/2022 -- 4:00pm Add yelp api file.
+5/19/2022 -- 5:00pm finished fronend site and website is functional.
+
+## Credit and Collaborations
+Sam Brindle. He helped us with the WRRC diagram.
+<img src="https://i.imgur.com/YbKAOQO.png"><img>
+
+
+##Name of feature: city-explorer-api
+
+##Estimate of time needed to complete: 2 hours
+
+##Start time: 3:00pm PST
+
+##Finish time: 5:00pm PST
+
+##Actual time needed to complete: 2 hours

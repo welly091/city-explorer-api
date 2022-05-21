@@ -115,9 +115,9 @@ Add cashe at backend and add yelp.com request.
 Node.js, Express.js, React.js
 
 ## Change Log
-5/19/2022 -- 3:00pm Start the project. Start Debug files.
-5/19/2022 -- 4:00pm Add yelp api file.
-5/19/2022 -- 5:00pm finished fronend site and website is functional.
+5/20/2022 -- 3:00pm Start the project. Start Debug files.
+5/20/2022 -- 4:00pm Add yelp api file.
+5/20/2022 -- 5:00pm finished fronend site and website is functional.
 
 ## Credit and Collaborations
 Sam Brindle. He helped us with the WRRC diagram.
